@@ -1,11 +1,32 @@
 const CHOICES = ["ROCK", "PAPER", "SCISSORS"];
 
+function game() {
+    let playerPoints = 0;
+    let computerPoints = 0;
 
+    for (let i = 0; i < 5; i++) {
+        let result = playRound(playerPlay(), computerPlay());
+
+        console.log(result);
+
+        if (result.includes("You win")) {
+            playerPoints++;
+        } else if (result.includes("You lose")) {
+            computerPoints++;
+        }
+    }
+
+    if (playerPoints > computerPoints) {
+        console.log(`Congratulations! You win the game (${playerPoints}:${computerPoints})! `);
+    } else if (computerPoints > playerPoints) {
+        console.log(`You lose the game (${playerPoints}:${computerPoints}) :( Try once more!`);
+    } else {
+        console.log(`Final result is draw! (${playerPoints}:${computerPoints})`);
+    }
+}
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
-    console.log(playerSelection);
-    console.log(computerSelection);
 
     if (playerSelection === "ROCK") {
         if (computerSelection === "PAPER") {
@@ -29,8 +50,8 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === "SCISSORS") {
         if (computerSelection === "ROCK") {
-            return "You lose! Rock beats Paper";
-        } else if (computerSelection === "Paper") {
+            return "You lose! Rock beats Scissors";
+        } else if (computerSelection === "PAPER") {
             return "You win! Scissors beats Paper";
         } else {
             return "Draw!"
@@ -45,10 +66,4 @@ function computerPlay() {
 
 function playerPlay() {
     return prompt("Rock, paper or scissors: ");
-}
-
-function test() {
-    for (let i = 0; i < 3; i++) {
-        console.log(playRound(playerPlay(), computerPlay()));
-    }
 }
