@@ -1,9 +1,9 @@
 const CHOICES = ["ROCK", "PAPER", "SCISSORS"];
 
 const resultMessage = document.querySelector('.result-message');
-const playerScore = document.querySelector('.player-score');
-const computerScore = document.querySelector('.computer-score');
-const mainContainer = document.querySelector('.main-container');
+const playerScore = document.querySelector('#playerScore');
+const computerScore = document.querySelector('#computerScore');
+const mainContainer = document.querySelector('.main');
 let playerPoints = 0;
 let computerPoints = 0; 
 
@@ -13,6 +13,7 @@ choiceButtons.forEach(btn => btn.addEventListener('click', playRound));
 function playRound(e) {
     computerSelection = computerPlay();
     playerSelection = e.target.innerText;
+    updateChoiceWindow(playerSelection, computerSelection);
     const result = determineWinnerOfRound(playerSelection, computerSelection);
     resultMessage.textContent = result;
     addScores(result);
@@ -28,14 +29,35 @@ function playRound(e) {
     }
 }
 
+function updateChoiceWindow(playerSelection, computerSelection) {
+    const playerChoiceBox = document.querySelector('#playerChoice');
+    const computerChoiceBox = document.querySelector('#computerChoice');
+    let previousChoice;
+    let currentChoice;
+    if (playerSelection === "ROCK") {
+        currentChoice = 'rock-btn';
+    } else if (playerSelection === "PAPER") {
+        currentChoice = 'paper-btn';
+    } else {
+        currentChoice = 'scissors-btn';
+    }
+
+    if (playerChoiceBox.classList.length === 1) {
+        playerChoiceBox.classList.add(currentChoice);
+    } else {
+        previousChoice = playerChoiceBox.classList[1];
+        playerChoiceBox.classList.replace(previousChoice, currentChoice);
+    }
+}
+
 function addScores(result) {
     if (result.includes('You win!')) {
         playerPoints++;
-        playerScore.textContent = playerPoints;
+        playerScore.textContent = `Player score: ${playerPoints}`;
     }
     if (result.includes('You lose!')) {
         computerPoints++;
-        computerScore.textContent = computerPoints;
+        computerScore.textContent = `Computer score: ${computerPoints}`;
     }
 }
 

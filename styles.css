@@ -1,4 +1,4 @@
-* {
+*, *::before, *::after{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -8,23 +8,53 @@
     
 } */
 
-.main-container {
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.main{
+    display: block;
+    text-align: center;
 }
 
-.scores {
-    display: flex;
+.scoreboard {
     text-align: center;
-    border: 1px solid blue;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.scores-container {
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.choice {
+    border: 2px solid rgb(33, 34, 34);
+    border-radius: 5%;
+    width: 125px;
+    height: 125px;
+    background-position: center;
+    background-size: cover;
+    background-color: white;
+}
+
+.score {
+    margin: 0.5rem 0;
+}
+
+.result-message {
+    margin: 1rem 0;
+}
+
+.choice-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
 .choice-btn {
-    width: 150px;
-    height: 150px;
     cursor: pointer;
+    color: rgba(255, 255, 255, 0);
 }
 
 .play-again-btn {
@@ -33,8 +63,25 @@
     cursor: pointer;
 }
 
+.choose-order {
+    margin-bottom: 0.5rem;
+}
+
 header {
     text-align: center;
     padding: 2em 0;
-    background-color: rgb(243, 242, 211);
+    background-color: rgb(37, 37, 37);
+    color: rgb(245, 228, 72);
+}
+
+.rock-btn {
+    background-image: url(assets/rock.gif);
+}
+
+.paper-btn {
+    background-image: url(assets/paper.gif);
+}
+
+.scissors-btn {
+    background-image: url(assets/scissors.gif);
 }
