@@ -8,10 +8,24 @@
     <link rel = "stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="choice-btn-container">
-        <button class="choice-btn rock-btn">ROCK</button>
-        <button class="choice-btn paper-btn">PAPER</button>
-        <button class="choice-btn scissors-btn">SCISSORS</button>
+    <header>ROCK PAPER SCISSORS</header>
+    <div class="main-container">
+        <div class="scores">
+            <div class="player">
+                <h2>Player</h2>
+                <h3 class="player-score">0</h3>
+            </div>
+            <div class="computer">
+                <h2>Computer</h2>
+                <h3 class="computer-score">0</h3>
+            </div>
+        </div>
+        <div class="result-message"></div>
+        <div class="choice-btn-container">
+            <button class="choice-btn rock-btn">ROCK</button>
+            <button class="choice-btn paper-btn">PAPER</button>
+            <button class="choice-btn scissors-btn">SCISSORS</button>
+        </div>
     </div>
 
     <script src="game.js"></script>
