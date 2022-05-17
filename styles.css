@@ -7,10 +7,15 @@
 /* .choice-btn-container {
     
 } */
+body {
+    background-color: rgb(59, 57, 57);
+    color: yellow;
+}
 
 .main{
     display: block;
     text-align: center;
+    
 }
 
 .scoreboard {

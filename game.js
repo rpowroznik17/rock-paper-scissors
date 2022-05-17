@@ -1,9 +1,12 @@
 const CHOICES = ["ROCK", "PAPER", "SCISSORS"];
 
+const mainContainer = document.querySelector('.main');
 const resultMessage = document.querySelector('.result-message');
 const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
-const mainContainer = document.querySelector('.main');
+const playerChoiceBox = document.querySelector('#playerChoice');
+const computerChoiceBox = document.querySelector('#computerChoice');
+
 let playerPoints = 0;
 let computerPoints = 0; 
 
@@ -13,7 +16,8 @@ choiceButtons.forEach(btn => btn.addEventListener('click', playRound));
 function playRound(e) {
     computerSelection = computerPlay();
     playerSelection = e.target.innerText;
-    updateChoiceWindow(playerSelection, computerSelection);
+    updateChoiceWindow(playerSelection, playerChoiceBox);
+    updateChoiceWindow(computerSelection, computerChoiceBox);
     const result = determineWinnerOfRound(playerSelection, computerSelection);
     resultMessage.textContent = result;
     addScores(result);
@@ -29,24 +33,23 @@ function playRound(e) {
     }
 }
 
-function updateChoiceWindow(playerSelection, computerSelection) {
-    const playerChoiceBox = document.querySelector('#playerChoice');
-    const computerChoiceBox = document.querySelector('#computerChoice');
+function updateChoiceWindow(selection, choiceBox) {
     let previousChoice;
     let currentChoice;
-    if (playerSelection === "ROCK") {
+    
+    if (selection === "ROCK") {
         currentChoice = 'rock-btn';
-    } else if (playerSelection === "PAPER") {
+    } else if (selection === "PAPER") {
         currentChoice = 'paper-btn';
     } else {
         currentChoice = 'scissors-btn';
     }
 
-    if (playerChoiceBox.classList.length === 1) {
-        playerChoiceBox.classList.add(currentChoice);
+    if (choiceBox.classList.length === 1) {
+        choiceBox.classList.add(currentChoice);
     } else {
-        previousChoice = playerChoiceBox.classList[1];
-        playerChoiceBox.classList.replace(previousChoice, currentChoice);
+        previousChoice = choiceBox.classList[1];
+        choiceBox.classList.replace(previousChoice, currentChoice);
     }
 }
 
